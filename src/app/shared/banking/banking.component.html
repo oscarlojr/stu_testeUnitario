@@ -7,11 +7,13 @@
 
 <p>
   Poupança: R${{ getPoupanca }}
+  <br>
   <input type="text" #sacar>
   <button (click)="setSacar(sacar.value)" > Sacar </button>
 </p>
 <p>
   Carteira: R${{ getCarteira }}
+  <br>
   <input type="text" #depositar>
   <button (click)="setDepositar(depositar.value)" > Depositar </button>
 </p>
