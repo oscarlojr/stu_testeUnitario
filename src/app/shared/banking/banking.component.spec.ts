@@ -36,11 +36,27 @@ describe('BankingComponent', () => {
     expect(component.getCarteira).toEqual(60);
   });
 
+  it(`(U) setSacar(): Não deve transferir para poupança como 
+    string (isNaN) ou poupanca < value`, () => {
+    expect(component.setSacar('string')).not.toBeTruthy();
+    expect(component.setSacar('70')).not.toBeTruthy();
+    expect(component.getPoupanca).toEqual(10);
+    expect(component.getCarteira).toEqual(50);
+  });
+
   it('(U) setDepositar(): Deve transferir de carteira para poupança', () => {
     component.setDepositar('20');
     fixture.detectChanges();
     expect(component.getCarteira).toEqual(30);
     expect(component.getPoupanca).toEqual(30);
+  });
+
+  it(`(U) setDepositar(): Não deve transferir para carteira como 
+    string (isNaN) ou carteira < value`, () => {
+    expect(component.setDepositar('string')).not.toBeTruthy();
+    expect(component.setDepositar('70')).not.toBeTruthy();
+    expect(component.getPoupanca).toEqual(10);
+    expect(component.getCarteira).toEqual(50);
   });
 
 });
